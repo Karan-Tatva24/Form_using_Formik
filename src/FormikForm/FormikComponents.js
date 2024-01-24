@@ -17,13 +17,15 @@ const initialValues = {
     linkdin: "",
   },
   resume: "",
+  password: "",
+  confirmpassword: "",
 };
 
 const onSubmit = (values, onSubmitProps, setSubmitting) => {
   console.log(values);
   // console.log(onSubmitProps);
   onSubmitProps.resetForm();
-  // setSubmitting(false);
+  setSubmitting(false);
 };
 
 const validationSchema = Yup.object().shape({
@@ -51,6 +53,10 @@ const validationSchema = Yup.object().shape({
       .required("Required!"),
   }),
   resume: Yup.mixed().required("Required!"),
+  password: Yup.string().required("Required!"),
+  confirmpassword: Yup.string()
+    .required("Required!")
+    .oneOf([Yup.ref("password"), null], "Password must match!"),
 });
 
 const FormikComponents = () => {
@@ -154,14 +160,33 @@ const FormikComponents = () => {
               <ErrorMessage name="resume" component={TextError} />
             </div>
 
+            <div className="form-control">
+              <label htmlFor="password">Password</label>
+              <Field type="password" name="password" id="password" />
+              <ErrorMessage name="password" component={TextError} />
+            </div>
+
+            <div className="form-control">
+              <label htmlFor="confirmpassword">Confirm Password</label>
+              <Field
+                type="password"
+                name="confirmpassword"
+                id="confirmpassword"
+              />
+              <ErrorMessage name="confirmpassword" component={TextError} />
+            </div>
+
             <button
+              className="btn"
               type="submit"
-              style={{ marginRight: "10px" }}
+              style={{ marginRight: "15px" }}
               disabled={!formik.isValid}
             >
               Submit
             </button>
-            <button type="reset">Reset</button>
+            <button className="btn" type="reset">
+              Reset
+            </button>
           </Form>
         );
       }}

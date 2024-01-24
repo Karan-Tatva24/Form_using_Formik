@@ -1,0 +1,56 @@
+@mixin Display($display) {
+  display: $display;
+}
+
+@mixin Border() {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.App {
+  @include Display(flex);
+  justify-content: center;
+}
+
+.form-control {
+  label {
+    font-weight: bold;
+    @include Display(flex);
+    margin-bottom: 5px;
+  }
+  input + label {
+    font-weight: bold;
+    @include Display(inline-flex);
+    margin-right: 20px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  textarea,
+  select {
+    @include Display(block);
+    width: 400px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background: {
+      color: #fff;
+      image: none;
+    }
+    @include Border();
+  }
+  margin-bottom: 20px;
+  .error {
+    color: red;
+  }
+}
+
+.btn {
+  @include Border();
+  background-color: rgba(5, 105, 5, 0.795);
+  color: white;
+  font-size: 15px;
+  padding: 5px;
+}

@@ -3,23 +3,24 @@
   justify-content: center;
 }
 
-label {
+.form-control {
+  margin-bottom: 20px;
+}
+.form-control label {
   font-weight: bold;
   display: flex;
   margin-bottom: 5px;
 }
-
-input + label {
+.form-control input + label {
   font-weight: bold;
   display: inline-flex;
   margin-right: 20px;
 }
-
-input[type='text'],
-input[type='email'],
-input[type='password'],
-textarea,
-select {
+.form-control input[type=text],
+.form-control input[type=email],
+.form-control input[type=password],
+.form-control textarea,
+.form-control select {
   display: block;
   width: 400px;
   padding: 6px 12px;
@@ -30,13 +31,16 @@ select {
   background-image: none;
   border: 1px solid #ccc;
   border-radius: 4px;
-  /* margin-bottom: 20px; */
 }
-
-.form-control {
-  margin-bottom: 20px;
-}
-
-.error {
+.form-control .error {
   color: red;
 }
+
+.btn {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: rgba(5, 105, 5, 0.795);
+  color: white;
+  font-size: 15px;
+  padding: 5px;
+}/*# sourceMappingURL=App.css.map */
